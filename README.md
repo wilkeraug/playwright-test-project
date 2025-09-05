@@ -1,38 +1,171 @@
-# 🎭 Playwright Test Automation Framework
+# 🎭 Playwright Multi-Site Test Automation Framework
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![Playwright](https://img.shields.io/badge/Playwright-1.40.0-green.svg)](https://playwright.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3.0-blue.svg)](https://www.typescriptlang.org/)
 
-A comprehensive, production-ready test automation framework built with Playwright and TypeScript, following industry best practices.
+A comprehensive test automation framework featuring **ready-to-run test suites** for multiple demo sites, plus a generic template for custom applications. Built with Playwright and TypeScript following industry best practices.
 
-## 🚀 Features
+## ✨ Key Features
 
-- ✅ **Page Object Model (POM)** architecture
-- ✅ **TypeScript** for type safety
-- ✅ **Cross-browser** testing (Chrome, Firefox, Safari, Edge)
-- ✅ **Mobile** testing support
-- ✅ **API** testing capabilities
-- ✅ **Accessibility** testing with axe-core
-- ✅ **Visual regression** testing
-- ✅ **Performance** testing
-- ✅ **Parallel execution** with sharding
-- ✅ **Retry mechanism** for flaky tests
-- ✅ **Multiple reporters** (HTML, JSON, JUnit)
-- ✅ **CI/CD integration** with GitHub Actions
-- ✅ **Custom fixtures** for reusable setup
-- ✅ **Environment configuration** support
-- ✅ **Comprehensive test data management**
-- ✅ **Built-in helpers and utilities**
+- 🚀 **Ready-to-Run Tests** - 50+ working tests for real demo sites
+- 🎯 **Multiple Test Sites** - SauceDemo, Herokuapp, ReqRes API
+- 📦 **Page Object Model** - Clean, maintainable architecture
+- 🔄 **CI/CD Ready** - GitHub Actions workflow included
+- 📊 **Multiple Reporters** - HTML, JSON, JUnit formats
+- 🌐 **Cross-Browser** - Chrome, Firefox, Safari support
+- 📱 **Responsive Testing** - Mobile browser support
+- ♿ **Accessibility** - Built-in a11y testing capabilities
+- 🎨 **TypeScript** - Full type safety and IntelliSense
+- 🔧 **Customizable** - Generic template for any application
 
-## 📋 Prerequisites
+## 📋 Table of Contents
+
+- [Quick Start](#-quick-start)
+- [Project Structure](#-project-structure)
+- [Available Test Suites](#-available-test-suites)
+- [Installation](#-installation)
+- [Running Tests](#-running-tests)
+- [Test Sites & Credentials](#-test-sites--credentials)
+- [CI/CD Integration](#-cicd-integration)
+- [Writing Custom Tests](#-writing-custom-tests)
+- [Best Practices](#-best-practices)
+- [Troubleshooting](#-troubleshooting)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+## 🚀 Quick Start
+
+Get up and running in less than 5 minutes:
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/playwright-project.git
+cd playwright-project
+
+# Install dependencies
+npm install
+
+# Install Playwright browsers
+npx playwright install
+
+# Run your first test suite
+npm run test:saucedemo
+
+# View the HTML report
+npm run report
+```
+
+## 📁 Project Structure
+
+```
+playwright-project/
+├── package.json                    # Main package file 
+├── playwright.config.ts            # Main config
+├── .gitignore                      # Git ignore 
+├── setup.sh                        # Setup script 
+├── .github/
+│   └── workflows/
+│       └── tests.yml               # CI/CD 
+├── templates/
+│   ├── saucedemo/
+│   │   ├── playwright.config.ts   # Config
+│   │   ├── README.md               # Docs 
+│   │   ├── pages/
+│   │   │   ├── login.page.ts      
+│   │   │   ├── inventory.page.ts  
+│   │   │   ├── cart.page.ts       
+│   │   │   └── checkout.page.ts   
+│   │   └── tests/
+│   │       ├── login.spec.ts      
+│   │       ├── inventory.spec.ts  
+│   │       └── e2e-purchase.spec.ts 
+│   ├── herokuapp/
+│   │   ├── playwright.config.ts   
+│   │   ├── README.md               
+│   │   ├── pages/
+│   │   │   └── base.page.ts       
+│   │   └── tests/
+│   │       └── [multiple test files] 
+│   ├── reqres-api/
+│   │   ├── playwright.config.ts  
+│   │   ├── README.md               
+│   │   └── tests/
+│   │       ├── users.spec.ts      
+│   │       ├── auth.spec.ts       
+│   │       └── resources.spec.ts  
+│   └── generic/
+│       └── [your original template structure]
+└── shared/
+    └── utils/
+        └── helpers.ts              
+```
+
+## 🎯 Available Test Suites
+
+### 1. 🛍️ SauceDemo (E-commerce)
+
+Complete E2E test suite for an e-commerce application.
+
+- **URL**: https://www.saucedemo.com
+- **Tests**: 20+ scenarios
+- **Features**:
+  - User authentication (multiple user types)
+  - Product browsing and sorting
+  - Shopping cart management
+  - Complete checkout flow
+  - Order confirmation
+
+### 2. 🌐 Herokuapp (The Internet)
+
+Various UI testing challenges and patterns.
+
+- **URL**: https://the-internet.herokuapp.com
+- **Tests**: 15+ scenarios
+- **Features**:
+  - Form authentication
+  - Dynamic content loading
+  - Drag and drop
+  - JavaScript alerts
+  - File upload/download
+  - Hover effects
+  - Data tables
+
+### 3. 🔌 ReqRes API
+
+Comprehensive REST API testing suite.
+
+- **URL**: https://reqres.in/api
+- **Tests**: 15+ scenarios
+- **Features**:
+  - CRUD operations
+  - Authentication/Registration
+  - Response validation
+  - Error handling
+  - Performance checks
+
+### 4. 📄 Generic Template
+
+Customizable template for your own application.
+
+- Boilerplate structure
+- Example page objects
+- Sample test patterns
+- Utility functions
+
+## 💻 Installation
+
+### Prerequisites
 
 - Node.js 18 or higher
 - npm or yarn
-- VS Code (recommended)
+- Git
 
-## 🛠️ Installation
+### Step-by-Step Installation
 
 1. **Clone the repository**
 ```bash
-git clone <your-repo-url>
-cd playwright-test-project
+git clone https://github.com/yourusername/playwright-project.git
+cd playwright-project
 ```
 
 2. **Install dependencies**
@@ -42,326 +175,312 @@ npm install
 
 3. **Install Playwright browsers**
 ```bash
+# Install all browsers
 npx playwright install
+
+# Or install specific browsers
+npx playwright install chromium
+npx playwright install firefox
+npx playwright install webkit
 ```
 
-4. **Set up environment variables**
+4. **Verify installation**
 ```bash
-cp .env.example .env
-# Edit .env with your configuration
+npm run test:saucedemo -- --headed
 ```
 
-## 🏃‍♂️ Running Tests
+## 🏃 Running Tests
 
-### All Tests
+### Run All Test Suites
 ```bash
-npm test
+npm run test:all-demos        # Run all demo site tests
 ```
 
-### Specific Test Suites
+### Run Specific Test Suites
 ```bash
-# End-to-end tests
-npm run test:e2e
-
-# API tests
-npm run test:api
-
-# Accessibility tests
-npm run test:a11y
-
-# Performance tests
-npm run test:performance
-
-# Visual regression tests
-npm run test:visual
+npm run test:saucedemo        # E-commerce tests
+npm run test:herokuapp        # UI challenge tests
+npm run test:api             # API tests
 ```
 
-### Specific Browsers
+### Run with Different Options
 ```bash
-# Chrome only
-npm run test:chrome
+# Run in headed mode (see browser)
+npm run test:headed
 
-# Firefox only
-npm run test:firefox
-
-# Safari only
-npm run test:webkit
-
-# Mobile browsers
-npm run test:mobile
-```
-
-### Debug Mode
-```bash
-# Debug with Playwright Inspector
-npm run test:debug
-
-# UI Mode (recommended for debugging)
+# Run in UI mode (interactive)
 npm run test:ui
 
-# Headed mode (see browser)
-npm run test:headed
+# Run in debug mode
+npm run test:debug
+
+# Run specific test file
+npx playwright test templates/saucedemo/tests/login.spec.ts
+
+# Run tests matching specific pattern
+npx playwright test -g "login"
+
+# Run on specific browser
+npx playwright test --project=chromium
+npx playwright test --project=firefox
+npx playwright test --project=webkit
 ```
 
-### Generate Tests
+### Generate New Tests
 ```bash
-# Open Playwright codegen
+# Open Playwright code generator
 npm run codegen
+
+# Generate for specific site
+npm run codegen:saucedemo
+npm run codegen:herokuapp
 ```
 
-## 📁 Project Structure
+### View Test Reports
+```bash
+# Open HTML report
+npm run report
 
-```
-playwright-test-project/
-├── .github/
-│   └── workflows/
-│       └── playwright.yml              # CI/CD pipeline
-├── tests/
-│   ├── e2e/                           # End-to-end tests
-│   │   ├── auth/
-│   │   │   └── login.spec.ts
-│   │   ├── checkout/
-│   │   │   └── purchase-flow.spec.ts
-│   │   └── home/
-│   │       └── homepage.spec.ts
-│   ├── api/                           # API tests
-│   │   └── users-api.spec.ts
-│   └── accessibility/                 # Accessibility tests
-│       └── a11y.spec.ts
-├── pages/                             # Page Object Model
-│   ├── base.page.ts
-│   ├── login.page.ts
-│   ├── home.page.ts
-│   └── checkout.page.ts
-├── fixtures/                          # Test fixtures
-│   ├── base.fixture.ts
-│   └── auth.fixture.ts
-├── utils/                             # Utility functions
-│   ├── helpers.ts
-│   ├── test-data.ts
-│   └── constants.ts
-├── test-data/                         # Test data files
-│   ├── users.json
-│   └── products.json
-├── playwright.config.ts               # Playwright configuration
-├── package.json                       # Project dependencies
-├── tsconfig.json                      # TypeScript configuration
-└── README.md                          # This file
+# View specific suite report
+npm run report:saucedemo
+npm run report:herokuapp
+npm run report:api
 ```
 
-## 🎯 Best Practices Implemented
+## 🔑 Test Sites & Credentials
 
-### 1. Page Object Model
-All page interactions are encapsulated in page objects for better maintainability:
+### SauceDemo Credentials
+| Username | Password | Description |
+|----------|----------|-------------|
+| `standard_user` | `secret_sauce` | Normal user |
+| `locked_out_user` | `secret_sauce` | Locked account |
+| `problem_user` | `secret_sauce` | User with site issues |
+| `performance_glitch_user` | `secret_sauce` | Performance issues |
+
+### Herokuapp Credentials
+| Username | Password | Description |
+|----------|----------|-------------|
+| `tomsmith` | `SuperSecretPassword!` | Valid user |
+
+### ReqRes API Credentials
+| Email | Password | Description |
+|-------|----------|-------------|
+| `eve.holt@reqres.in` | `cityslicka` | Valid API user |
+
+## 🔄 CI/CD Integration
+
+The project includes a complete GitHub Actions workflow that:
+
+- ✅ Runs on push to main/develop branches
+- ✅ Runs on pull requests
+- ✅ Scheduled daily runs
+- ✅ Parallel test execution
+- ✅ Automatic retry on failures
+- ✅ Test artifacts storage
+- ✅ HTML report generation
+
+### GitHub Actions Status
+
+View the `.github/workflows/tests.yml` file for the complete CI/CD configuration.
+
+### Running in CI
+
+The tests automatically run in CI with:
+- Headless mode
+- Retry on failure (2 attempts)
+- Artifact upload for reports
+- Test result summaries
+
+## ✍️ Writing Custom Tests
+
+### 1. Create a Page Object
 
 ```typescript
-// pages/login.page.ts
-export class LoginPage extends BasePage {
-  async login(email: string, password: string) {
-    await this.emailInput.fill(email);
-    await this.passwordInput.fill(password);
-    await this.loginButton.click();
+// templates/generic/pages/mypage.page.ts
+import { Page, Locator } from '@playwright/test';
+
+export class MyPage {
+  readonly page: Page;
+  readonly submitButton: Locator;
+
+  constructor(page: Page) {
+    this.page = page;
+    this.submitButton = page.locator('button[type="submit"]');
+  }
+
+  async clickSubmit() {
+    await this.submitButton.click();
   }
 }
 ```
 
-### 2. Custom Fixtures
-Reusable test setup with custom fixtures:
+### 2. Write a Test
 
 ```typescript
-// fixtures/base.fixture.ts
-export const test = base.extend<MyFixtures>({
-  loginPage: async ({ page }, use) => {
-    const loginPage = new LoginPage(page);
-    await use(loginPage);
-  }
-});
-```
+// templates/generic/tests/mytest.spec.ts
+import { test, expect } from '@playwright/test';
+import { MyPage } from '../pages/mypage.page';
 
-### 3. Test Organization
-Tests are organized by feature and type:
-- `tests/e2e/` - End-to-end user journeys
-- `tests/api/` - API endpoint testing
-- `tests/accessibility/` - WCAG compliance tests
-
-### 4. Data Management
-Centralized test data management:
-- Environment variables for sensitive data
-- JSON files for static test data
-- Helper functions for dynamic data generation
-
-### 5. Parallel Execution
-Tests run in parallel by default with configurable workers:
-```bash
-npm run test:parallel  # 4 workers
-npm run test:serial    # 1 worker
-```
-
-## 📊 Reporting
-
-### View HTML Report
-```bash
-npm run report
-```
-
-### Report Formats
-- **HTML**: Interactive report with screenshots/videos
-- **JSON**: Machine-readable results
-- **JUnit**: CI/CD integration
-- **Line**: Console output
-
-### Report Locations
-- HTML: `playwright-report/`
-- JSON: `reports/results.json`
-- JUnit: `reports/junit.xml`
-
-## 🐛 Debugging
-
-### VS Code Extension
-1. Install "Playwright Test for VSCode"
-2. Click the green arrow next to any test
-3. Set breakpoints for debugging
-
-### Trace Viewer
-```bash
-# View trace for failed tests
-npm run trace
-```
-
-### UI Mode
-```bash
-# Interactive test runner
-npm run test:ui
-```
-
-## 🔧 Configuration
-
-### Environment Variables
-```bash
-# .env file
-BASE_URL=http://localhost:3000
-API_URL=http://localhost:3000/api
-TEST_USER_EMAIL=test@example.com
-TEST_USER_PASSWORD=TestPassword123!
-```
-
-### Playwright Configuration
-Edit `playwright.config.ts` to customize:
-- Timeouts
-- Retries
-- Screenshots/Videos
-- Parallel workers
-- Browser settings
-
-## 🚀 CI/CD Integration
-
-### GitHub Actions
-The project includes a comprehensive GitHub Actions workflow that:
-- Runs tests on push/PR to main/develop
-- Executes tests in parallel with sharding
-- Uploads artifacts (reports, videos, traces)
-- Sends notifications on failure
-- Runs performance tests
-- Executes visual regression tests
-
-### Running in CI
-```yaml
-- name: Run Playwright tests
-  run: npm test
-  env:
-    CI: true
-    BASE_URL: ${{ secrets.BASE_URL }}
-```
-
-## 📈 Performance Testing
-
-Monitor key performance metrics:
-- Page Load Time
-- Time to Interactive (TTI)
-- First Contentful Paint (FCP)
-- Largest Contentful Paint (LCP)
-
-```bash
-npm run test:performance
-```
-
-## ♿ Accessibility Testing
-
-Automated WCAG 2.1 AA compliance testing:
-- Color contrast validation
-- ARIA attributes verification
-- Keyboard navigation testing
-- Screen reader compatibility
-
-```bash
-npm run test:a11y
-```
-
-## 🎨 Visual Regression Testing
-
-Catch visual bugs with screenshot comparison:
-
-```bash
-# Update baseline screenshots
-npm run test:visual:update
-
-# Run visual tests
-npm run test:visual
-```
-
-## 🤝 Contributing
-
-1. Create a feature branch
-2. Write tests following existing patterns
-3. Ensure all tests pass
-4. Submit a pull request
-
-### Writing Tests
-
-```typescript
-import { test, expect } from '@fixtures/base.fixture';
-
-test.describe('Feature Name', () => {
-  test('should perform action', async ({ page, loginPage }) => {
-    // Arrange
-    await loginPage.goto();
-    
-    // Act
-    await loginPage.login('user@example.com', 'password');
-    
-    // Assert
-    await expect(page).toHaveURL('/dashboard');
+test.describe('My Feature', () => {
+  test('should perform an action', async ({ page }) => {
+    const myPage = new MyPage(page);
+    await page.goto('https://myapp.com');
+    await myPage.clickSubmit();
+    await expect(page).toHaveURL(/success/);
   });
 });
 ```
 
-## 🛡️ Security
+### 3. Run Your Test
 
-- Never commit `.env` files
-- Use secrets in CI/CD
-- Sanitize test data
-- Regular dependency updates
+```bash
+npx playwright test templates/generic/tests/mytest.spec.ts
+```
+
+## 🎯 Best Practices
+
+### ✅ DO's
+- Use Page Object Model for maintainability
+- Keep tests independent and atomic
+- Use meaningful test descriptions
+- Implement proper waits and assertions
+- Use test fixtures for reusable setup
+- Group related tests with `describe` blocks
+- Use environment variables for sensitive data
+- Take screenshots on failure
+- Use proper selectors (data-testid preferred)
+
+### ❌ DON'Ts
+- Don't use hard-coded waits
+- Don't share state between tests
+- Don't use CSS selectors that might change
+- Don't skip error handling
+- Don't ignore flaky tests
+- Don't commit sensitive data
+
+## 🐛 Troubleshooting
+
+### Common Issues and Solutions
+
+**Issue**: Tests fail with timeout errors
+```bash
+# Solution: Increase timeout in config
+use: {
+  navigationTimeout: 60000,
+  actionTimeout: 30000,
+}
+```
+
+**Issue**: Browser not installed
+```bash
+# Solution: Install browsers
+npx playwright install
+```
+
+**Issue**: Tests work locally but fail in CI
+```bash
+# Solution: Ensure CI mode is enabled
+CI=true npm test
+```
+
+**Issue**: Cannot find elements
+```bash
+# Solution: Use Playwright Inspector
+npx playwright test --debug
+```
+
+## 📊 Test Reports
+
+### HTML Report
+Interactive HTML report with:
+- Test results overview
+- Execution time
+- Screenshots on failure
+- Video recordings
+- Trace viewer
+
+### JSON Report
+Machine-readable format for:
+- CI/CD integration
+- Custom dashboards
+- Test analytics
+
+### JUnit Report
+XML format for:
+- Jenkins integration
+- Test management tools
+- CI/CD pipelines
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Contribution Guidelines
+
+- Write clear commit messages
+- Add tests for new features
+- Update documentation
+- Follow existing code style
+- Ensure all tests pass
 
 ## 📚 Resources
 
-- [Playwright Documentation](https://playwright.dev)
-- [TypeScript Documentation](https://www.typescriptlang.org)
-- [GitHub Actions](https://docs.github.com/en/actions)
+### Documentation
+- [Playwright Documentation](https://playwright.dev/docs/intro)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+- [GitHub Actions Documentation](https://docs.github.com/en/actions)
 
-## 📝 License
+### Learning Resources
+- [Playwright Best Practices](https://playwright.dev/docs/best-practices)
+- [Page Object Model Pattern](https://playwright.dev/docs/pom)
+- [API Testing with Playwright](https://playwright.dev/docs/api-testing)
 
-[Your License Here]
+### Community
+- [Playwright Discord](https://discord.com/invite/playwright-807756831384403968)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/playwright)
+- [GitHub Discussions](https://github.com/playwright-community/playwright-go/discussions)
 
-## 👥 Team
+## 📈 Project Stats
 
-[Your Team Information]
+- **Total Tests**: 50+
+- **Test Sites**: 3 demo sites + generic template
+- **Browsers Supported**: Chrome, Firefox, Safari
+- **Average Execution Time**: ~2-3 minutes per suite
+- **Code Coverage**: Example implementations for common patterns
 
-## 📞 Support
+## 🔐 Security
 
-For questions or issues:
-- Create an issue in GitHub
-- Contact: [your-email@example.com]
+- Never commit `.env` files with real credentials
+- Use GitHub Secrets for CI/CD
+- Rotate test credentials regularly
+- Sanitize test data
+- Keep dependencies updated
 
----
+## 📄 License
 
-Built with ❤️ using Playwright
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👥 Authors
+
+- [Wilker Augusto](https://github.com/wilkeraug)
+
+## 🙏 Acknowledgments
+
+- Playwright team for the excellent framework
+- Demo site maintainers (SauceDemo, Herokuapp, ReqRes)
+- Community contributors
+- You for using this framework!
+
+<div align="center">
+  
+**Built with ❤️ using [Playwright](https://playwright.dev)**
+
+⭐ Star this repository if you find it helpful!
+
+</div>
